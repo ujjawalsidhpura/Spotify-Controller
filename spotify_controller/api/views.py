@@ -1,9 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+from itsdangerous import serializer
+from rest_framework import generics
+from .serializers import RoomSerializer
+from .models import Room
 
-# Create your views here.
+# RoomView is the top level View that queries all rooms in DB and pass through RoomSerializer which converts it into JSON and then pass it on to front end
 
 
-def main(request):
-    return HttpResponse('<h1>Hello</h1>')
+class RoomView(generics.ListAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
