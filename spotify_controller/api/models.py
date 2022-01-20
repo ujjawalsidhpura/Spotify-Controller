@@ -1,4 +1,19 @@
+import imp
+from turtle import st
 from django.db import models
+import string
+import random
+
+
+def generate_unique_code():
+    len = 6
+
+    while True:
+        code = ''.join(random.choices(string.ascii_uppercase, k=len))
+        if Room.objects.filter(code=code).count() == 0:
+            break
+
+    return code
 
 
 class Room(models.Model):
