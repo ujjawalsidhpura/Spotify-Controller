@@ -3,6 +3,7 @@ import { render } from "react-dom";
 import { useState } from "react";
 import { TextField, Button, Grid, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default function RoomJoinPage(props) {
 
@@ -28,8 +29,8 @@ export default function RoomJoinPage(props) {
         };
 
         fetch("/api/join-room", requestOptions)
-            .then((response) => {
-                if (response.ok) {
+            .then((res) => {
+                if (res.ok) {
                     props.history.push(`/room/${state.roomCode}`);
                 } else {
                     setState({ error: "Room not found." });
