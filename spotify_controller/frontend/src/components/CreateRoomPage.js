@@ -33,17 +33,20 @@ export default function CreateRoomPage(props) {
 
         const requestOptions = {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
             body: JSON.stringify({
                 // keys are what backend is expecting
                 votes_to_skip: votesToSkip,
                 guest_can_pause: guestCanPause,
-            }),
+            })
         };
 
         fetch("/api/create-room", requestOptions)
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) => props.history.push(`/room/${data.code}`));
     }
 
     return (
