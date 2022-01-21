@@ -18,14 +18,10 @@ export default function CreateRoomPage(props) {
     const [votesToSkip, setVotesToSkip] = useState(defaultVotes)
 
     const handleVotesChange = (e) => {
-        e.preventDefault();
-
         setVotesToSkip(e.target.value);
     }
 
     const handleGuestCanPauseChange = (e) => {
-        e.preventDefault();
-
         setGuestCanPause(e.target.value)
     }
 
