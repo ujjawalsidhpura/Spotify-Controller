@@ -1,12 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
+import HomePage from './HomePage';
 
-export default function App() {
+export default function App(props) {
 
     return (
-        <h1>
-            Testing react
-        </h1>
+        <div>
+            <HomePage />
+        </div>
+
     )
 }
 
