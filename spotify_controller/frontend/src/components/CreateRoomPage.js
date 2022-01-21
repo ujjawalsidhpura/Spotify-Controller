@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -10,9 +10,12 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 
 export default function CreateRoomPage(props) {
+
     let defaultVotes = 2
+    let navigate = useNavigate();
 
     const [guestCanPause, setGuestCanPause] = useState(true)
     const [votesToSkip, setVotesToSkip] = useState(defaultVotes)
@@ -22,6 +25,7 @@ export default function CreateRoomPage(props) {
     }
 
     const handleGuestCanPauseChange = (e) => {
+
         setGuestCanPause(e.target.value)
     }
 
@@ -42,7 +46,7 @@ export default function CreateRoomPage(props) {
 
         fetch("/api/create-room", requestOptions)
             .then((res) => res.json())
-            .then((data) => props.history.push(`/room/${data.code}`));
+            .then((data) => navigate(`/room/${data.code}`));
     }
 
     return (

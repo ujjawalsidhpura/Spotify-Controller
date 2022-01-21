@@ -2,7 +2,7 @@ import React from "react";
 import CreateRoomPage from './CreateRoomPage';
 import RoomJoinPage from './RoomJoinPage';
 import Room from './Room'
-import { BrowserRouter, Routes, Route, Link, Redirect } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 export default function HomePage(props) {
     const home = <h1>Home</h1>;
