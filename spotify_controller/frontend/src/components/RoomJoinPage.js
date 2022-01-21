@@ -3,9 +3,11 @@ import { render } from "react-dom";
 import { useState } from "react";
 import { TextField, Button, Grid, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 export default function RoomJoinPage(props) {
+
+    let navigate = useNavigate();
 
     const [state, setState] = useState({
         roomCode: '',
@@ -31,7 +33,7 @@ export default function RoomJoinPage(props) {
         fetch("/api/join-room", requestOptions)
             .then((res) => {
                 if (res.ok) {
-                    props.history.push(`/room/${state.roomCode}`);
+                    navigate(`/room/${state.roomCode}`);
                 } else {
                     setState({ error: "Room not found." });
                 }
